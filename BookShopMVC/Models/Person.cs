@@ -1,4 +1,6 @@
-﻿namespace BookShopMVC.Models
+﻿using System.Drawing.Printing;
+
+namespace BookShopMVC.Models
 {
     public class Person
     {
@@ -11,6 +13,7 @@
         public string Email { get; set; }
 
         public int Phone { get; set; }
+
 
 
     }

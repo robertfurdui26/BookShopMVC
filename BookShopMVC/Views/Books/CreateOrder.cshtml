@@ -4,13 +4,12 @@
     ViewData["Title"] = "CreateOrder";
 }
 
-<h1>CreateOrder</h1>
+<h3>Complete Order</h3>
 
-<h4>Person</h4>
-<hr />
-<div class="row">
+
+<div class="pay-order">
     <div class="col-md-4">
-        <form asp-action="CreateOrder">
+        <form asp-action="CreateOrder" method="post" class="custom-form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -33,15 +32,17 @@
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Send Order" class="btn btn-primary" />
+                <a href="https://www.visa.co.uk/"  class="btn btn-primary">Pay with Card</a>
+                <a asp-action="Index" class="btn btn-primary btn-lg btn-block">Back to List</a>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Save Order</button>
+
+
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

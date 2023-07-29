@@ -1,4 +1,7 @@
-﻿namespace BookShopMVC.Models
+﻿using Microsoft.AspNetCore.Http;
+
+
+namespace BookShopMVC.Models
 {
     public class BookModel
     {
@@ -13,6 +16,12 @@
         public DateTime Created { get; set; }
 
         public int Price { get; set; }
+
+
+
+
+
+
 
 
     }

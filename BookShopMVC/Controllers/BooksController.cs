@@ -7,6 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookShopMVC.Data;
 using BookShopMVC.Models;
+using System.Reflection.Metadata;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using Document = iTextSharp.text.Document;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 
 namespace BookShopMVC.Controllers
 {
@@ -22,9 +28,9 @@ namespace BookShopMVC.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-              return _context.BookShoop != null ? 
-                          View(await _context.BookShoop.ToListAsync()) :
-                          Problem("Entity set 'BookShopDbContext.BookShoop'  is null.");
+            return _context.BookShoop != null ?
+                        View(await _context.BookShoop.ToListAsync()) :
+                        Problem("Entity set 'BookShopDbContext.BookShoop'  is null.");
         }
 
         // GET: Books/Details/5
@@ -150,14 +156,14 @@ namespace BookShopMVC.Controllers
             {
                 _context.BookShoop.Remove(bookModel);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookModelExists(int id)
         {
-          return (_context.BookShoop?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.BookShoop?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         [HttpGet]
@@ -182,13 +188,107 @@ namespace BookShopMVC.Controllers
         }
 
         // GET: Books
-      
+
         public async Task<IActionResult> IndexOrder()
         {
             return _context.PersonBookShoop != null ?
                         View(await _context.PersonBookShoop.ToListAsync()) :
                         Problem("Entity set 'BookShopDbContext.BookShoop'  is null.");
         }
+
+        public async Task<IActionResult> ExportToPdf()
+        {
+            if (_context.BookShoop == null)
+            {
+                return Problem("Entity set'BookShopDbContext' is null");
+            }
+
+            var books = await _context.BookShoop.ToListAsync();
+
+            //creare pdf
+
+            var document = new Document();
+            var memoryStream = new MemoryStream();
+            var writer = PdfWriter.GetInstance(document, memoryStream); ;
+            document.Open();
+
+            var paragraph = new Paragraph("Books List");
+            document.Add(paragraph);
+
+            foreach (var book in books)
+            {
+                var booksInfo = $"Titlul: {book.Title}\n" +
+                    $"Author: {book.Author}\n" +
+                    $"Descriere: {book.Description}\n" +
+                    $"Created: {book.Created}\n" +
+                    $"Price: {book.Price}\n";
+                document.Add(new Paragraph(booksInfo));
+                document.Add(new Paragraph("--------------------------------------------------"));
+
+
+
+
+
+            }
+
+            //add table to pdf
+            document.Add(paragraph);
+            document.Close();
+
+            //conf raspunsul http pt a return fisierul pdf
+
+            var fileName = "Books.pdf";
+            var contentType = "application/pdf";
+            var fileContent = memoryStream.ToArray();
+            return File(fileContent, contentType, fileName);
+        }
+
+        public async Task<IActionResult> ExportOrder()
+        {
+            if (_context.PersonBookShoop == null)
+            {
+                return Problem("Entity set'BookShopDbContext' is null");
+            }
+
+            var order = await _context.PersonBookShoop.ToListAsync();
+
+            //creare pdf
+
+            var document = new Document();
+            var memoryStream = new MemoryStream();
+            var writer = PdfWriter.GetInstance(document, memoryStream); ;
+            document.Open();
+
+            var paragraph = new Paragraph("Order List");
+            document.Add(paragraph);
+
+            foreach (var person in order)
+            {
+                var booksInfo = $"Name: {person.Name}\n" +
+                    $"Email: {person.Email}\n" +
+                    $"Adress: {person.Adress}\n" +
+                    $"Phone: {person.Phone}";
+                document.Add(new Paragraph(booksInfo));
+                document.Add(new Paragraph("--------------------------------------------------"));
+
+
+
+
+
+            }
+
+            //add table to pdf
+            document.Add(paragraph);
+            document.Close();
+
+            //conf raspunsul http pt a return fisierul pdf
+
+            var fileName = "OrderDataBase.pdf";
+            var contentType = "application/pdf";
+            var fileContent = memoryStream.ToArray();
+            return File(fileContent, contentType, fileName);
+        }
+
     }
 
 

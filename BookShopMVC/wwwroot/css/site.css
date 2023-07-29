@@ -9,14 +9,266 @@ html {
 }
 
 html {
-  position: relative;
   min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 0px;
+    background-image:url(../images/books.jpg);
+    background-size:cover;
+    height:100%;
+    align-items:center;
 }
 
-.createButton{
-    margin:10px;
+.nav-item{
+    margin-left:auto;
+    
+}
+
+
+.home-advice {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: dimgray 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+h1 {
+    margin: 30px;
+    color: #e8c48e;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+h4 {
+    color: #e8c48e;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#order {
+    font-size: 80px;
+    color: #e8c48e;
+}
+
+#order-create{
+    font-size:30px;
+}
+
+.table{
+    color:white;
+}
+
+
+h5{
+    display:flex;
+    justify-content:center;
+}
+
+
+.add{
+    display:flex;
+    justify-content:center;
+}
+
+/* Custom form style */
+.custom-form {
+    padding: 12px;
+    color: black;
+    background-color: #e8c48e;
+    width: 450px;
+    font-family:'Times New Roman', Times, serif;
+    font-size:20px;
+    margin:-5px;
+    margin-bottom:10px;
+}
+
+
+.custom-form .text-danger {
+    color: #000;
+}
+
+.custom-form .btn-primary {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4a90e2;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    .custom-form .btn-primary:hover {
+        background-color: #3c78c8;
+    }
+
+
+
+.btn-info{
+    color:white;
+    background-color:black;
+    border:1px solid black;
+    margin-right:20px;
+    padding:7px;
+    width:80px;
+    }
+
+.btn-buy{
+    display:flex;
+    justify-content:center;
+    color:white;
+    background-color:black;
+}
+
+.card-body {
+    background-color: grey;
+    
+}
+
+.card{
+    background-color:grey;
+}
+
+.book-card {
+    color: #e8c48e;
+    display:flex;
+    justify-content:center;
+}
+
+
+
+.btn-info:hover{
+    background-color:dimgrey;
+    border:none;
+}
+
+.button-new {
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    margin-right: 20px
+}
+
+.button-new:hover {
+    background-color: dimgray;
+    border:none;
+    color:black;
+}
+
+
+
+
+    .custom-form .form-group {
+        margin-bottom: 20px;
+        
+    }
+
+    .custom-form .control-label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        border: 5px;
+    }
+
+    .custom-form .form-control {
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: white;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+     .custom-form .form-control:focus {
+            outline: none;
+            border:1px solid;
+            box-shadow: 0 0 8px #4a90e2;
+        }
+
+    .custom-form .text-danger {
+        color: black;
+    }
+
+    .custom-form .btn-primary {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: black;
+        color:white;
+        width: 100%;
+        box-sizing: border-box;
+        margin:5px;
+    }
+
+        .custom-form .btn-primary:hover {
+            background-color: dimgrey;
+        }
+
+.order-body {
+    background-color:dimgray;
+    padding:50px;
+  font-size:16px;
+  
+}
+
+.order-card {
+    display: flex;
+    justify-content: center;
+}
+
+.order-center{
+    display:flex;
+    justify-content:center;
+}
+
+
+
+.pay-order{
+    display:flex;
+    justify-content:center;
+}
+
+h3 {
+    color: #e8c48e;
+    font-weight: bold;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.table-item{
+    font-size:20px;
+}
+
+
+
+
+.home {
+    text-align: center;
+    font-size: 80px;
+    animation: slideAnimation 4s infinite;
+}
+
+@keyframes slideAnimation {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

@@ -3,10 +3,10 @@
 
 
 @{
-    ViewData["Title"] = "IndexOrder";
+    ViewData["Title"] = "Books List";
 }
 
-<h1>Succes...!</h1>
+<h1>All your order</h1>
 
 
 <table class="table">
@@ -24,13 +24,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Phone)
             </th>
-            <th>
-            </th>
+            
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class="table-item">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -43,11 +42,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
-            <td>
-            </td>
+
         </tr>
 }
     </tbody>
 
-    <h1>Thank you for your order!</h1>
 </table>
+
+<div>
+    <a asp-action="Index" class="btn btn-info">Back to List</a>
+    <a asp-action="ExportOrder" asp-controller="Books" class=" btn btn-info"> Exporta PDF  </a>
+
+</div>

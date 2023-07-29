@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShopMVC.Migrations
 {
     [DbContext(typeof(BookShopDbContext))]
-    [Migration("20230726120131_Initial")]
+    [Migration("20230729095901_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -44,6 +44,10 @@ namespace BookShopMVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -54,6 +58,34 @@ namespace BookShopMVC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BookShoop");
+                });
+
+            modelBuilder.Entity("BookShopMVC.Models.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PersonBookShoop");
                 });
 #pragma warning restore 612, 618
         }

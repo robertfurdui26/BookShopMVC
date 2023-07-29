@@ -30,4 +30,23 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+app.UseEndpoints(endpoints =>
+{
+    // ...
+    endpoints.MapControllerRoute(
+        name: "exportToPdf",
+        pattern: "Books/ExportToPdf",
+        defaults: new { controller = "Books", action = "ExportToPdf" });
+});
+
+
+
+
+
+
+
+
+
+
 app.Run();
